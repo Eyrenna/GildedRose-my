@@ -21,6 +21,9 @@ class Item(Updatable):
     def getquality(self):
         return self.quality
 
+    def __repr__(self):
+        return '%s, %s, %s' % (self.name, self.sell_in, self.quality)
+
 
 if __name__ == "__main__":
 
@@ -29,6 +32,9 @@ if __name__ == "__main__":
     assert pato.getname() == "pato"
     assert pato.getsell_in() == "100"
     assert pato.getquality() == "50"
+
+    # CASOS TEST __repr__
+    print(pato)
 
     # CASOS TEST Udatable
     assert pato.update_quality() == None
