@@ -4,6 +4,17 @@ from updatable import Updatable
 
 class RegularItem(Item,Updatable):
 
+    def getsell_in(self):
+        return self.sell_in
+
+
+    def getquality(self):
+        return self.quality
+    
+    def getname(self): 
+        return self.name
+
+
     def setsell_in(self):
         getsell_in -= 1
         return getsell_in
@@ -28,7 +39,13 @@ class RegularItem(Item,Updatable):
 
 if __name__ == "__main":
 
-    
+    #CASOS TEST get attributes
+    pato = Item("pato", 100, 50)
+    assert pato.getname() == "pato"
+    assert pato.getsell_in() == 100
+    assert pato.getquality() == 50
+
+    #CASOS TEST updatable
     pato = RegularItem(pato, 20, 5)
     oca = RegularItem(oca, 0, 5)
     pato.update_quality()
