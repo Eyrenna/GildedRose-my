@@ -8,6 +8,14 @@ class RegularItem(Item,Updatable):
         getsell_in -= 1
         return getsell_in
 
+    def setquality(self, value):
+       if getquality + value > 50:
+           getquality = 50
+       elif getquality + value >= 0:
+           getquality += value
+       else:
+           getquality = 0
+
 
     def update_quality(self):
         if getsell_in > 0:
@@ -28,3 +36,12 @@ if __name__ == "__main":
     assert pato.update_quality == 4
     assert oca.update_quality == -1
     assert oca.update_quality == 3
+
+
+    #CASOS TEST con setquality
+    ganso = RegularItem(ganso, 20, 50)
+    gansorojo = RegularItem(gansorojo, 20, 0)
+    gansoazul = RegularItem(gansoazul, 20, 10)
+    assert ganso.update_quality == 50
+    assert gansorojo.update_quality == 0
+    assert gansoazul.update_quality == 9
