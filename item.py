@@ -1,7 +1,4 @@
-from updatable import Updatable
-
-
-class Item(Updatable):
+class Item():
 
 
     def __init__(self, name, sell_in, quality):
@@ -35,6 +32,3 @@ if __name__ == "__main__":
 
     # CASOS TEST __repr__
     print(pato)
-
-    # CASOS TEST Udatable
-    assert pato.update_quality() == None
