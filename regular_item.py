@@ -22,7 +22,10 @@ if __name__ == "__main":
 
     
     pato = RegularItem(pato, 20, 5)
+    oca = RegularItem(oca, 0, 5)
     pato.setsell_in()
     pato.update_quality()
     assert pato.sell_in == 19
     assert pato.update_quality == 4
+    assert oca.update_quality == -1
+    assert oca.update_quality == 3
