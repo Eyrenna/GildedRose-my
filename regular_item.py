@@ -5,17 +5,17 @@ from updatable import Updatable
 class RegularItem(Item,Updatable):
 
     def setsell_in(self):
-        self.sell_in -= 1
-        return self.sell_in
+        getsell_in -= 1
+        return getsell_in
 
 
     def update_quality(self):
-        if sell_in > 0:
-            self.quality -= 1
-            return self.quality
+        if getsell_in > 0:
+            getquality -= 1
+            return getquality
         else:
-            self.quality -= 2
-            return self.quality
+            getquality -= 2
+            return getquality
         setsell_in()
 
 if __name__ == "__main":
