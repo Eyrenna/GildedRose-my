@@ -16,49 +16,47 @@ class RegularItem(Item,Updatable):
 
 
     def setsell_in(self):
-        getsell_in -= 1
-        return getsell_in
+        self.sell_in -= 1
 
     def setquality(self, value):
-       if getquality + value > 50:
-           getquality = 50
-       elif getquality + value >= 0:
-           getquality += value
+       if self.quality + value > 50:
+           self.quality = 50
+       elif self.quality + value >= 0:
+           self.quality += value
        else:
-           getquality = 0
+           self.quality = 0
 
 
     def update_quality(self):
-        if getsell_in > 0:
-            getquality -= 1
-            return getquality
+        if self.sell_in > 0:
+            self.quality -=1
         else:
-            getquality -= 2
-            return getquality
-        setsell_in()
+            self.quality -= 2
+        self.setsell_in()
 
-if __name__ == "__main":
+if __name__ == "__main__":
 
     #CASOS TEST get attributes
-    pato = Item("pato", 100, 50)
+    pato = RegularItem("pato", 100, 50)
     assert pato.getname() == "pato"
     assert pato.getsell_in() == 100
     assert pato.getquality() == 50
 
     #CASOS TEST updatable
-    pato = RegularItem(pato, 20, 5)
-    oca = RegularItem(oca, 0, 5)
+    pato = RegularItem("pato", 20, 5)
+    oca = RegularItem("oca", 0, 5)
     pato.update_quality()
+    oca.update_quality()
     assert pato.sell_in == 19
-    assert pato.update_quality == 4
-    assert oca.update_quality == -1
-    assert oca.update_quality == 3
+    assert pato.quality == 4
+    assert oca.sell_in == -1
+    assert oca.quality == 3
 
 
     #CASOS TEST con setquality
-    ganso = RegularItem(ganso, 20, 50)
-    gansorojo = RegularItem(gansorojo, 20, 0)
-    gansoazul = RegularItem(gansoazul, 20, 10)
-    assert ganso.update_quality == 50
-    assert gansorojo.update_quality == 0
-    assert gansoazul.update_quality == 9
+    ganso = RegularItem("ganso", 20, 50)
+    gansorojo = RegularItem("gansorojo", 20, 0)
+    gansoazul = RegularItem("gansoazul", 20, 10)
+    assert ganso.quality == 50
+    assert gansorojo.quality == 0
+    assert gansoazul.quality == 9
